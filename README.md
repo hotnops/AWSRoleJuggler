@@ -12,3 +12,8 @@ Next, use the aws_role_juggler.py script to keep a role session alive for an ind
 python aws_role_juggler.py -r arn:aws:iam::123456789:role/BuildRole arn:aws:iam::123456789:role/GitRole arn:aws:iam::123456789:role/ArtiRole
 ```
 Even though the session is requested for an hour, it is refreshed every 15 minutes, and the credentials are output to screen.
+
+# TODO
+* Automatically detect cycles
+* Write credentials to file
+* Adjust session duration based on role max duration
