@@ -1,7 +1,7 @@
 # AWSRoleJuggler
 A toolset to juggle AWS roles for persistent access
 
-#Usage
+# Usage
 First, use the find_cicular_trust.py tool to locate roles that create a circular trust. This is assuming the calling environment already has credentials loaded for the AWS environment:
 ```
 ./find_circular_trust.py 
