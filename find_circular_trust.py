@@ -27,8 +27,6 @@ def getCycles(aws_roles):
                     g.add_edges_from([(source, dest)])
                 
     cycles = list(nx.simple_cycles(g))
-    nx.draw(g)
-    plt.show()
     return cycles
 
 if __name__ == "__main__":
