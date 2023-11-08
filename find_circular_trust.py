@@ -53,8 +53,7 @@ def getCycles(aws_roles):
 
 
 if __name__ == "__main__":
-    client = boto3.client('iam')
-    aws_roles = client.iam_list_roles()
+    aws_roles iam_list_roles()
 
     cycles = getCycles(aws_roles)
     for c in cycles:
