@@ -20,4 +20,4 @@ Even though the session is requested for an hour, it is refreshed every 15 minut
 
 # PSRoleJuggle
 Powershell script to check for Role juggling. The script loops thorough the roles and tried to assume each one. If successful, it prints out information.
-Note: AWS credentials are needed.
+Note: AWS CLI needs to be installed and AWS credentials need to be configured.
