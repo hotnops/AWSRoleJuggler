@@ -18,6 +18,6 @@ Even though the session is requested for an hour, it is refreshed every 15 minut
 * Write credentials to file for logging
 * Adjust session duration based on role max duration
 
-#PSRoleJuggle
+# PSRoleJuggle
 Powershell script to check for Role juggling. The script loops thorough the roles and tried to assume each one. If successful, it prints out information.
 Note: AWS credentials are needed.
