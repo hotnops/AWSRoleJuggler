@@ -2,11 +2,7 @@
 
 import boto3
 import json
-import matplotlib.pyplot as plt
 import networkx as nx
-
-from collections import defaultdict
-
 
 def iam_list_roles():
     iam_client = boto3.client('iam')
@@ -29,17 +25,16 @@ def iam_list_roles():
     except Exception as e:
         raise
 
-
 def getCycles(aws_roles):
     g = nx.DiGraph()
-    for jsonRole in aws_roles:
-        g.add_nodes_from([jsonRole["Arn"]])
+    for role in aws_roles:
+        g.add_nodes_from([role["Arn"]])
 
-    for jsonRole in aws_roles:
-        for statement in jsonRole['AssumeRolePolicyDocument']['Statement']:
+    for role in aws_roles:
+        for statement in role['AssumeRolePolicyDocument']['Statement']:
             if statement['Effect'] == "Allow" and 'AWS' in statement['Principal']:
                 arns = statement['Principal']['AWS']
-                source = jsonRole['Arn']
+                source = role['Arn']
                 if isinstance(arns, list):
                     for arn in arns:
                         dest = arn
@@ -51,10 +46,9 @@ def getCycles(aws_roles):
     cycles = list(nx.simple_cycles(g))
     return cycles
 
-
 if __name__ == "__main__":
     client = boto3.client('iam')
-    aws_roles = client.iam_list_roles()
+    aws_roles = iam_list_roles()
 
     cycles = getCycles(aws_roles)
     for c in cycles:
